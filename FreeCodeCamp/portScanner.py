@@ -19,4 +19,5 @@ def portScanner(port):
     else:
         print("Port is open!")
 
+# Function call, will try to edit to include loop through desired ports, until break condition
 portScanner(port)
