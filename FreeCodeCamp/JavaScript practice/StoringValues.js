@@ -24,3 +24,19 @@ var i = 1;
 i = i + 1;
 i++;
 i--;
+
+// Esacpe character '\' dor doing nested quotes in strings (just like in Python)
+const myStr = "<a href=\"http://www.example.com\" target=\"_blank\">Link</a>";
+
+/*
+\'	single quote
+\"	double quote
+\\	backslash
+\n	newline
+\t	tab
+\r	carriage return
+\b	word boundary
+\f	form feed
+*/
+
+const myStr2 = "FirstLine\n\t\\SecondLine\nThirdLine";
