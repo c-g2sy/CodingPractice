@@ -14,3 +14,13 @@ let catSound = "Purrr";
 // Use const for read-only declarations
 const catColor = "Black";
 
+// Math examples, common operators +, -, *, /, **, %
+var x = 15 * 8;
+var y = 16 - 12;
+var z = 10 / 2;
+
+// Incrementation and decremenation, also +=, -+, *=, /=
+var i = 1;
+i = i + 1;
+i++;
+i--;
