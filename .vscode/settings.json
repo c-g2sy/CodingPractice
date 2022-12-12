@@ -1,3 +1,4 @@
 {
-    "editor.fontFamily": "monocraft"
+    "editor.fontFamily": "monocraft",
+    "python.analysis.typeCheckingMode": "basic"
 }
