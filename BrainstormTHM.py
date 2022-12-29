@@ -3,7 +3,7 @@
 import sys, socket
 
 ip = "10.10.81.86" # Or use sys.argv[1] to take cmdline arg
-port = 8889 # Or use sys.argv[2] to take cmdline arg
+port = 9999 # Or use sys.argv[2] to take cmdline arg
 username = b'user'
 
 # Remember to regenerate shellcode if changing THM VPN IP or port!
