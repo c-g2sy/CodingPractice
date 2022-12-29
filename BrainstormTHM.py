@@ -2,7 +2,7 @@
 
 import sys, socket
 
-ip = "10.13.6.11" # Or use sys.argv[1] to take cmdline arg
+ip = "10.10.81.86" # Or use sys.argv[1] to take cmdline arg
 port = 8889 # Or use sys.argv[2] to take cmdline arg
 username = b'user'
 
