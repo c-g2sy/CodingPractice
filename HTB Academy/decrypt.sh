@@ -32,12 +32,14 @@ hash="VTJGc2RHVmtYMTl2ZnYyNTdUeERVRnBtQWVGNmFWWVUySG1wTXNmRi9rQT0K"
 # <- For-Loop here
 for i in {1..28}
 do
-    salt=$(echo $var | base64)
+    var=$(echo $var | base64)
 # Check if $salt is empty
 if [[ ! -z "$salt" ]]
 then
+	salt=${#var}
 	decrypt
 	echo $flag
 else
 	exit 1
 fi
+done
