@@ -36,7 +36,7 @@ do
 # Check if $salt is empty
 if [[ ! -z "$salt" ]]
 then
-	salt=${#var}
+	salt=$(echo $var | wc -c)
 	decrypt
 	echo $flag
 else
