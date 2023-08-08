@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
+import sys
 
 def print_reverse(input_string):
-    reversed_string = input_string[::-1]
-    print(reversed_string)
+    return input_string[::-1]
 
-# Get input from the user
-user_input = input("Enter a string: ")
-
-# Call the function to print the reversed string
-print_reverse(user_input)
+if len(sys.argv) > 1:
+    # If a command-line argument is provided, use it as input
+    input_string = ' '.join(sys.argv[1:])
+    reversed_string = print_reverse(input_string)
+    print("Reversed string:", reversed_string)
+else:
+    # If no command-line argument, prompt the user for input
+    user_input = input("Enter a string: ")
+    reversed_string = print_reverse(user_input)
+    print("Reversed string:", reversed_string)
