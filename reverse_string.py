@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 import sys
 
-def print_reverse(input_string):
-    return input_string[::-1]
+print_reverse = lambda s: s[::-1]
 
 if len(sys.argv) > 1:
     # If a command-line argument is provided, use it as input
