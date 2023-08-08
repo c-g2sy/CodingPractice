@@ -1,28 +1,30 @@
 #!/bin/bash
 
-# Check if argument requirements are met:
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <integer> <base64_encoded_string>"
+# Check if the required arguments are provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <base64_encoded_string>"
     exit 1
 fi
 
-# Read integer and Base64 encoded string inputs
-x="$1"
-encoded_string="$2"
+# Read the Base64 encoded string
+encoded_string="$1"
+decoded_string="$encoded_string"
 
-# Loop 'x' times and print decoded string after each iteration
-for ((i=0; i<x; i++)); do
-    decoded_string="$(echo "$encoded_string" | base64 -d)"
+# Start loop counter
+iterations=1
 
-    # Check if base64 decoding was successful
-    if [ $? -ne 0 ]; then
-        echo "String fully decoded after $i iterations"
-        exit 1
+# Decoding loop
+while true; do
+    decoded_string="$(echo "$decoded_string" | base64 -d 2>/dev/null)"
+    
+    # Check if the decoding resulted in an invalid Base64 string
+    if ! echo "$decoded_string" | base64 -d &>/dev/null; then
+        break
     fi
 
-    encoded_string="$decoded_string"
-    echo "$i: "$decoded_string""
+    # Increment loop counter
+    iterations=$((iterations + 1))
 done
 
-# Print final decoded string after 'x' iterations
-echo "Decoded $x times: $decoded_string"
+echo "Decoding iterations stopped at: $iterations"
+echo "$decoded_string"
