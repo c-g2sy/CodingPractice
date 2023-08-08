@@ -8,7 +8,7 @@ if len(sys.argv) > 1:
     input_string = ' '.join(sys.argv[1:])
 else:
     # If no command-line argument, prompt the user for input
-    user_input = input("Enter a string: ")
+    input_string = input("Enter a string: ")
 
 reversed_string = print_reverse(input_string)
 print("Reversed string:", reversed_string)
