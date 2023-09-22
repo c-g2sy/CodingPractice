@@ -1,10 +1,9 @@
 #!/usr/env/python python3
 
+import click
 import requests
 import re
 from bs4 import BeautifulSoup
-
-PAGE_URL = 'http://target:port'
 
 def get_html_of(url):
     resp = requests.get(url)
@@ -36,8 +35,15 @@ def get_top_words_from(all_words):
     occurrences = count_occurrences_in(all_words)
     return sorted(occurrences.items(), key=lambda item: item[1], reverse=True)
 
-all_words = get_all_words_from(PAGE_URL)
-top_words = get_top_words_from(all_words)
+@click.command()
+@click.option('--url', '-u', prompt='Web URL', help='URL of webpage to extract from.')
+@click.option('--length', '-l', default=0, help='Minimum word length (default: 0, no limit).')
+def main(url, length):
+    the_words = get_all_words_from(url)
+    top_words = get_top_words_from(the_words, length)
 
-for i in range(10):
-    print(top_words[i][0])
+    for i in range(10):
+        print(top_words[i][0])
+
+if __name__ == '__main__':
+    main()
