@@ -8,3 +8,4 @@ def get_pubkey(f):
 N, e = get_pubkey('./key.pub')
 
 print(f'{e = }')
+print(f'{N = }')
