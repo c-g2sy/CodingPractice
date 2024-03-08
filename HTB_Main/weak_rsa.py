@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from Crypto.PublicKey import RSA
 import owiener
 
