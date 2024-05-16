@@ -15,10 +15,8 @@ fi
 # Backup original file
 cp "$1" "$1.backup"
 
-# Prompt user for replacements
-read -p "Enter the replacement for 'TZID:': " tzid_replace
-read -p "Enter the replacement for 'DTSTART;TZID=': " dtstart_replace
-read -p "Enter the replacement for 'DTEND;TZID=': " dtend_replace
+# Define replacement for the first TZID
+tzid_replace="America/New_York"
 
 # Find the line numbers of the strings to replace
 tzid_line=$(awk '/^TZID:/{ print NR; exit }' "$1")
@@ -28,10 +26,10 @@ dtend_line=$(awk '/^DTEND;TZID=/{ print NR; exit }' "$1")
 # Replace the text after "TZID:" with user input
 sed -i "${tzid_line}s/:.*/:$tzid_replace/" "$1"
 
-# Replace the text after "DTSTART;TZID=" with user input
-sed -i "${dtstart_line}s/:.*/:$dtstart_replace/" "$1"
+# Replace the text after "DTSTART;TZID=" with empty string
+sed -i "${dtstart_line}s/:.*//" "$1"
 
-# Replace the text after "DTEND;TZID=" with user input
-sed -i "${dtend_line}s/:.*/:$dtend_replace/" "$1"
+# Replace the text after "DTEND;TZID=" with empty string
+sed -i "${dtend_line}s/:.*//" "$1"
 
 echo "Replacements applied to $1"
