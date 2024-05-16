@@ -19,17 +19,17 @@ cp "$1" "$1.backup"
 tzid_replace="America/New_York"
 
 # Find the line numbers of the strings to replace
-tzid_line=$(awk '/^TZID:/{ print NR; exit }' "$1")
+tzid_line=$(awk '/^TZID=/{ print NR; exit }' "$1")
 dtstart_line=$(awk '/^DTSTART;TZID=/{ print NR; exit }' "$1")
 dtend_line=$(awk '/^DTEND;TZID=/{ print NR; exit }' "$1")
 
-# Replace the text after "TZID:" with user input
+# Replace the text after TZID: with user input
 sed -i "${tzid_line}s/:.*/:$tzid_replace/" "$1"
 
-# Replace the text after "DTSTART;TZID=" with empty string
-sed -i "${dtstart_line}s/:.*//" "$1"
+# Replace the text after DTSTART;TZID= with empty string
+sed -i "${dtstart_line}s/.*://" "$1"
 
-# Replace the text after "DTEND;TZID=" with empty string
-sed -i "${dtend_line}s/:.*//" "$1"
+# Replace the text after DTEND;TZID= with empty string
+sed -i "${dtend_line}s/.*://" "$1"
 
 echo "Replacements applied to $1"
